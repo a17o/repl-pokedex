@@ -1,11 +1,10 @@
-package utils
+package main 
 
 import (
-  "fmt"
   "strings"
 )
 
 func cleanInput(text string) []string {
-  pokemons := strings.Fields(text)
+  pokemons := strings.Fields(strings.ToLower(text))
   return pokemons
 }

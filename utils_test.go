@@ -1,4 +1,4 @@
-package utils
+package main
 import (
   "testing"
 )
@@ -25,11 +25,19 @@ func TestCleanInput(t *testing.T) {
       expected: []string{},
     },
   }
+
   for _, c := range cases {
     actual := cleanInput(c.input)
+    if len(actual) != len(c.expected) {
+      t.Errorf("Test failed: length of the expected string (%s) differs from the actual (%s)", actual, c.expected)
+    }
     for i := range actual {
       word := actual[i]
       expectedWord := c.expected[i]
+
+      if word != expectedWord {
+        t.Errorf("Test failed: expected %s, got %s", expectedWord, word)
+      }
     }
   }
 }
